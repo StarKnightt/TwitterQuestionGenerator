@@ -102,19 +102,13 @@ const RandomQuestion = () => {
   return (
     <div className="relative h-screen flex flex-col">
       <div id="tsparticles" className="absolute inset-0 z-0"></div>
-      <nav className="relative z-10 bg-opacity-10 backdrop-filter backdrop-blur-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex-shrink-0">
-              <span className="text-white text-lg font-semibold">TechQuest</span>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
-                <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-              </div>
-            </div>
+      <nav className="relative z-10 bg-opacity-10 backdrop-filter backdrop-blur-lg py-4">
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <span className="text-white text-xl font-bold">TechQuest</span>
+          <div className="space-x-4">
+            <a href="#" className="text-gray-300 hover:text-white transition duration-300">Home</a>
+            <a href="#" className="text-gray-300 hover:text-white transition duration-300">About</a>
+            <a href="#" className="text-gray-300 hover:text-white transition duration-300">Contact</a>
           </div>
         </div>
       </nav>
@@ -172,9 +166,18 @@ const RandomQuestion = () => {
         </div>
       </main>
       <footer className="relative z-10 bg-opacity-10 backdrop-filter backdrop-blur-lg py-4">
-        <p className="text-center text-white text-sm">
-          © 2024 Tech Question Generator. All rights reserved.
-        </p>
+        <div className="container mx-auto px-4 flex justify-between items-center">
+          <p className="text-gray-300 text-sm">
+            © 2024 Tech Question Generator
+          </p>
+          <div className="flex space-x-4">
+            <a href="https://github.com/StarKnightt/TwitterQuestionGenerator" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition duration-300">
+              GitHub
+            </a>
+            <a href="#" className="text-gray-300 hover:text-white transition duration-300">Privacy</a>
+            <a href="#" className="text-gray-300 hover:text-white transition duration-300">Terms</a>
+          </div>
+        </div>
       </footer>
     </div>
   );
