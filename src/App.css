@@ -1,0 +1,33 @@
+.App {
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+button:disabled {
+  background: #888;
+}
+
+button:hover:not(:disabled) {
+  background: #555;
+}
+
+p {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #333;
+}
