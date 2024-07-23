@@ -73,7 +73,3 @@ If you have any questions or feedback, feel free to reach out:
 Special thanks to all contributors and users who have supported this project!
 
 ---
-
-**© 2024 TechQuest. All rights reserved.**
-
-<!-- ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg) -->
