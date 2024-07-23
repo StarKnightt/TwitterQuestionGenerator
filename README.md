@@ -12,9 +12,9 @@ Check out the live demo [here](https://twitter-question-generator.vercel.app/)!
 - Simple and easy-to-use interface.
 - Share generated questions directly on Twitter.
 
-## Demo Video
+<!-- ## Demo Video
 
-<video controls src="TechQuestion - Made with Clipchamp.mp4" title="Title"></video>
+<video controls src="TechQuestion - Made with Clipchamp.mp4" title="Title"></video> -->
 
 
 ## Installation
