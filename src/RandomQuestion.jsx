@@ -142,7 +142,7 @@ const RandomQuestion = () => {
                 >
                   <p
                     ref={questionRef}
-                    className="text-lg sm:text-xl text-white font-medium text-center"
+                    className="text-lg sm:text-xl text-white font-medium text-center pr-12"
                   >
                     {question}
                   </p>
