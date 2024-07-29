@@ -14,10 +14,19 @@ const generationConfig = {
   responseMimeType: "text/plain",
 };
 
+const categories = [
+  "General",
+  "Frontend",
+  "Backend",
+  "DevOps",
+  "Mobile Development",
+];
+
 const RandomQuestion = () => {
   const [question, setQuestion] = useState("");
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [category, setCategory] = useState("General");
   const questionRef = useRef(null);
 
   useEffect(() => {
@@ -74,7 +83,7 @@ const RandomQuestion = () => {
     try {
       const chatSession = model.startChat({ generationConfig, history: [] });
       const result = await chatSession.sendMessage(
-        "Generate one simple, easy, humanly, one-liner question to get more engagement on Twitter about web development or programming, new questions evertyime:"
+        `Generate one simple, easy, humanly, one-liner question to get more engagement on Twitter about ${category} web development or programming, new questions every time:`
       );
       setQuestion(result.response.text().trim());
     } catch (error) {
@@ -102,6 +111,21 @@ const RandomQuestion = () => {
         .catch((err) => console.error("Failed to copy text: ", err));
     }
   };
+
+  const shareOnTwitter = () => {
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+      question
+    )}`;
+    window.open(twitterUrl, "_blank");
+  };
+
+  const shareOnLinkedIn = () => {
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+      window.location.href
+    )}&title=${encodeURIComponent(question)}`;
+    window.open(linkedInUrl, "_blank");
+  };
+
   return (
     <div className="relative h-screen flex flex-col">
       <div id="tsparticles" className="absolute inset-0 z-0"></div>
@@ -120,6 +144,35 @@ const RandomQuestion = () => {
               Generate engaging questions about web development and programming
               for your social media posts.
             </p>
+            <div className="mb-4">
+              <label htmlFor="category" className="block text-white mb-2">
+                Select Category:
+              </label>
+              <select
+                id="category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="w-full bg-white bg-opacity-20 text-white rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 appearance-none cursor-pointer"
+                style={{
+                  backgroundColor: "rgba(255, 255, 255, 0.2)",
+                  color: "white",
+                }}
+              >
+                {categories.map((cat) => (
+                  <option
+                    key={cat}
+                    value={cat}
+                    style={{
+                      backgroundColor: "#4a5568", // Dark blue-gray background
+                      color: "white",
+                      padding: "8px",
+                    }}
+                  >
+                    {cat}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div className="flex justify-center mb-6">
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -138,7 +191,7 @@ const RandomQuestion = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-white bg-opacity-20 rounded-lg p-4 shadow-inner min-h-[80px] relative"
+                  className="bg-white bg-opacity-20 rounded-lg p-4 shadow-inner min-h-[80px] relative mb-4"
                 >
                   <p
                     ref={questionRef}
@@ -157,6 +210,26 @@ const RandomQuestion = () => {
                 </motion.div>
               )}
             </AnimatePresence>
+            {question && (
+              <div className="flex justify-center space-x-4">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={shareOnTwitter}
+                  className="bg-blue-400 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:bg-blue-500 transition duration-300 ease-in-out"
+                >
+                  Share on Twitter
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={shareOnLinkedIn}
+                  className="bg-blue-700 text-white font-semibold py-2 px-4 rounded-full shadow-lg hover:bg-blue-800 transition duration-300 ease-in-out"
+                >
+                  Share on LinkedIn
+                </motion.button>
+              </div>
+            )}
           </div>
         </motion.div>
       </main>
